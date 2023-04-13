@@ -1,9 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;700&family=Racing+Sans+One&family=Rubik+80s+Fade&display=swap");
 
+/* font-family: 'Martian Mono', monospace;
+font-family: 'Racing Sans One', cursive;
+font-family: 'Rubik 80s Fade', cursive; */
 
 /*----------------------------------------------------- variables----------------------------------------------------------*/
 :root{
     /* COLORS */
     --avengersImg : hsl(0, 0%, 2%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --lightRed: hwb(2 18% 11%);
+    --meduimRed: hwb(2 18% 30%);
+    --darkRed: hwb(2 18% 45%);
+    --lightBlue: hsl(216, 81%, 50%);
+    --maduimblue: hsl(216, 81%, 35%);
+    --darkBlue: hsl(216, 81%, 15%);
+    --lightGray: hsl(0, 5%, 74%);
+    --mediumGray: hsl(0, 5%, 50%);
+    --darkGray: hsl(0, 5%, 30%);
+    
+    /* SHADOWS */
+    --text-shadow1: 1px 1px 0px hsl(216, 81%, 35%), -1px -1px 0px hsl(216, 81%, 35%),
+                    0px 0px 3px var(--lightBlue), -1px -1px 2px var(--lightBlue),
+                    0px 0px 3px var(--white), -1px -1px 5px var(--white),
+                    -1px -1px 0px var(--lightBlue),
+                    1px 1px 3px var(--white), -1px -1px 5px var(--white)
+                    
 }
 
 /*----------------------------------------------------- resets----------------------------------------------------------*/
@@ -13,12 +36,20 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+}
+
 /*----------------------------------------------------- CLASSES----------------------------------------------------------*/
 
 .displayCenter{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.positionRelative{
+    position: relative;
 }
 
 .presentationBody{
@@ -38,7 +69,7 @@ main{
     width: 100vw;
 }
 
-/*--------------------------------------------FRONT PAGE----------------------------------------------------*/
+/*--------------------------------------------PRESENTATION PAGE----------------------------------------------------*/
 
 .principalImg{
     width: 100%;
@@ -47,7 +78,7 @@ main{
 .avengers{
     width: 100%;
     background-color: var(--avengersImg);
-    height: 110vh;
+    height: 100vh;
 }
 
 .avengers img{
@@ -56,7 +87,7 @@ main{
 }
 
 
-main .principalImgs div{
+.principalImgs div{
     height: auto;
     min-height: 100vh;
     background-attachment: fixed; 
@@ -87,3 +118,31 @@ main .principalImgs div{
     background-size: 100vw;
     background-position: bottom;
 }
+
+.principalGo{
+    position: absolute;  
+    top: 85vh;
+    right: 5vw;   
+}
+
+.principalGo h1,
+.principalGo h2,
+.principalGo a{
+    width: 100%;
+    color: var(--avengersImg);
+    font-size: min(1.2vw + 1rem);
+    letter-spacing: 2px;
+    text-shadow: var(--text-shadow1);
+    font-style: italic;
+    text-transform: uppercase;
+    font-family: 'Martian Mono', monospace ;
+    text-align: center;             
+}
+
+.principalGo a{
+    display: inline-block;
+    font-family:'Rubik 80s Fade', cursive; 
+    font-size: min(1.2vw + 2rem);
+    color: var(--white);
+}
+
