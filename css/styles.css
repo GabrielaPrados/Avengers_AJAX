@@ -1,0 +1,89 @@
+
+
+/*----------------------------------------------------- variables----------------------------------------------------------*/
+:root{
+    /* COLORS */
+    --avengersImg : hsl(0, 0%, 2%);
+}
+
+/*----------------------------------------------------- resets----------------------------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*----------------------------------------------------- CLASSES----------------------------------------------------------*/
+
+.displayCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentationBody{
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    background-color: var(--avengersImg);
+    background-size: 100px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*--------------------------------------------GENERAAL----------------------------------------------------*/
+
+
+main{
+    /* padding-top: 35vh; */
+    width: 100vw;
+}
+
+/*--------------------------------------------FRONT PAGE----------------------------------------------------*/
+
+.principalImg{
+    width: 100%;
+}
+
+.avengers{
+    width: 100%;
+    background-color: var(--avengersImg);
+    height: 110vh;
+}
+
+.avengers img{
+    width: 50%;
+    min-width: 300px;
+}
+
+
+main .principalImgs div{
+    height: auto;
+    min-height: 100vh;
+    background-attachment: fixed; 
+    background-size: 100vw;
+    background-repeat: no-repeat;
+}
+
+.frontImg1{
+   background-image: url("../imgs/banner.jpg");
+   background-size: 100vw;
+}
+
+.frontImg2{
+    background-image: url("../imgs/banner1.jpg");
+    background-size: 100vw;
+    background-attachment: scroll;
+    background-position: center;
+}
+
+.frontImg3{
+    background-image: url("../imgs/banner2.jpg");
+    background-size: 100vw;
+    background-position: center;
+}
+
+.frontImg4{
+    background-image: url("../imgs/banner3.png");
+    background-size: 100vw;
+    background-position: bottom;
+}
