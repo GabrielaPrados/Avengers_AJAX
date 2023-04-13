@@ -1,0 +1,58 @@
+.informationBack{
+    width: 100%;
+    min-height: 150vh;
+    z-index: 10;
+    background-color:  var(--maduimblueRgba);
+    position: absolute;
+    top: 0; 
+}
+
+.descriptionWhidth{
+    width: 60%;
+    flex-direction: column;
+}
+
+.showAvengerBox{ 
+    margin-top: 25vh;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.showAvangerImg{
+    width: 80%;
+    max-width: 700px;
+    min-width: 300px;
+    height: auto;
+    max-height: 800px;
+}
+
+.presentationGoH3{
+    color: var(--meduimRed);
+    text-shadow: 3px 3px 5px var(--black);
+    width: 100%;
+    align-self: center;
+    font-size: min(2vw + 1.5rem);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.showAvengerpharagraph{
+    margin: 30px 2vw;
+    font-size: min(1vh + .5rem) ;
+    color: var(--white);
+    text-align: center;
+}
+
+.PresentationGoIcon{
+    width: 50px;
+}
+
+.anchors{
+    font-family: 'Rubik 80s Fade', cursive;
+    color: var(--white);
+    font-size: 30px;
+    margin-top: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}

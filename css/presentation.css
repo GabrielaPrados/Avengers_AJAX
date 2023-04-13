@@ -1,0 +1,74 @@
+
+.principalImg{
+    width: 100%;
+}
+
+.avengers{
+    width: 100%;
+    background-color: var(--avengersImg);
+    height: 100vh;
+}
+
+.avengers img{
+    width: 50%;
+    min-width: 300px;
+}
+
+
+.principalImgs div{
+    height: auto;
+    min-height: 100vh;
+    background-attachment: fixed; 
+    background-size: 100vw;
+    background-repeat: no-repeat;
+}
+
+.frontImg1{
+   background-image: url("../imgs/banner.jpg");
+   background-size: 100vw;
+}
+
+.frontImg2{
+    background-image: url("../imgs/banner1.jpg");
+    background-size: 100vw;
+    background-attachment: scroll;
+    background-position: center;
+}
+
+.frontImg3{
+    background-image: url("../imgs/banner2.jpg");
+    background-size: 100vw;
+    background-position: center;
+}
+
+.frontImg4{
+    background-image: url("../imgs/banner3.png");
+    background-size: 100vw;
+    background-position: bottom;
+}
+
+.principalGo{
+    position: absolute;  
+    top: 85vh;
+    right: 5vw;   
+}
+
+.principalGo h1,
+.principalGo h2,
+.principalGo a{
+    width: 100%;
+    font-size: min(1.2vw + 1rem);
+    letter-spacing: 2px;
+    text-shadow: var(--text-shadow1);
+    font-style: italic;
+    text-transform: uppercase;
+    font-family: 'Martian Mono', monospace ;
+    text-align: center;             
+}
+
+.principalGo a{
+    display: inline-block;
+    font-family:'Rubik 80s Fade', cursive; 
+    font-size: min(1.2vw + 2rem);
+    color: var(--white);
+}
