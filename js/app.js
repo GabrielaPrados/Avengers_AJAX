@@ -24,7 +24,7 @@ function loadingPresentation() {
     principal.addEventListener("load", () => {
         if (principal.status === 200) {
             body.innerHTML = principal.response
-            location.hash = "presentation"
+            body.classList.add("presentationBody", "positionRelative" )
         }
     })
 }
@@ -42,12 +42,11 @@ function getName() {
 
 
 /* getting home and displayn card avangers */
-function getPage(url, node, hash, cb1) {
+function getPage(url, node, cb1) {
     const page = ajax(url) 
     page.addEventListener("load", () => {
         if (page.status === 200) {
             node.innerHTML = page.response
-            location.hash = hash
             main = document.querySelector("main")
                 if (typeof cb1 === "function") cb1()
         }
@@ -117,15 +116,16 @@ function creatingCard(db) {
 }
 
 /* adding opsity to cards and getting avenger html */
-function hidingCards(t) {
+function hideingCards(t) {
     const id = t.id
     const cards = document.querySelectorAll("article")
     cards.forEach(card => card.classList.add("cardsOpacity"))
     setTimeout(() => {
-        getPage("pages/avenger.html", main, null, ()=> avengerPage(id) )
+        getPage("pages/avenger.html", main, ()=> avengerPage(id) )
     }, 3000);
 }    
 
+/* creating article to display avenger */
 function avengerPage(id) {
     const showAvenger = db.find(av => av.id == id)
     const {name, surname, avenger, prensentationImg, description, web } = showAvenger;
@@ -145,4 +145,5 @@ function avengerPage(id) {
             <span class="close">CLOSE</span>
         </article>
     `
+    section.classList.add("heightAvenger")
 }
