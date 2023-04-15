@@ -1,6 +1,7 @@
 /*------------------------------------------------VARIABLES --------------------------------------------- */
-
-
+const body = document.body
+let main = document.querySelector("main")
+let db;
 /*------------------------------------------------FUCNTION AJAX --------------------------------------------- */
 
 
@@ -22,34 +23,41 @@ function loadingPresentation() {
     const principal = ajax("pages/presentation.html")
     principal.addEventListener("load", () => {
         if (principal.status === 200) {
-            document.body.innerHTML = principal.response
+            body.innerHTML = principal.response
+            location.hash = "presentation"
         }
     })
 }
 
+/* getting header avengers */
 function getName() {
+    const header = document.querySelector("header")
     const name = ajax("pages/name.html")
     name.addEventListener("load", () => {
         if (name.status === 200) {
-            document.body.innerHTML = name.response
-            newBody() /* changing classes from body */
-            getHome() /* getting home and displayn card avangers */
+            header.innerHTML = name.response
         }
     })
 }
 
 
 /* getting home and displayn card avangers */
-function getHome() {
-    const main = document.querySelector("main") /* gettin main element */
-    main.classList.add("displayCenter")
-    const home = ajax("pages/home.html")
-    home.addEventListener("load", () => {
-        if (home.status === 200) {
-            main.innerHTML = home.response
-            avengersDB() /* getting data base from monk api */
+function getPage(url, node, hash, cb1) {
+    const page = ajax(url) 
+    page.addEventListener("load", () => {
+        if (page.status === 200) {
+            node.innerHTML = page.response
+            location.hash = hash
+            main = document.querySelector("main")
+                if (typeof cb1 === "function") cb1()
         }
     })
+}
+
+function homePage() {
+    newBody()/* changing body classes */
+    getName() /* getting header avengers */
+    avengersDB() /* getting data base from monk api and displaying cards*/
 }
 
 
@@ -57,7 +65,6 @@ function getHome() {
 function avengersDB() {
     const getdb = ajax("https://6435a117537112453fdb89c5.mockapi.io/api/avengers")
     getdb.addEventListener("load", () => {
-        let db;
         if (getdb.status === 200) {
             db = JSON.parse(getdb.response)
             creatingCard(db)/* creating card and displaying them */
@@ -67,10 +74,10 @@ function avengersDB() {
     })
 }   
 
-/* changing classes from body */
+/* changing body classes*/
 function newBody() {
-    document.body.classList.remove("presentationBody")
-    document.body.classList.add("homeBody")
+    body.classList.remove("presentationBody")
+    body.classList.add("homeBody")
 }
 
 
@@ -89,16 +96,15 @@ function errorWarning() {
 
 /* creating card and displaying them */
 function creatingCard(db) {
-    const main = document.querySelector("main")
-    main.classList.add("displayCenter")
+    const main = document.querySelector("main") /* gettin main element */
     main.setAttribute("justify-content", "space-around" )
     main.innerHTML += db.map(av => {
-        const { name, surname, avenger, principalImg } = av;
+        const {id, name, surname, avenger, principalImg } = av;
         return `
         <article class="principalBack displayCenter">
             <div class="go">
                 <img src="imgs/iconoAvengers2.jpg" alt="Icono Avengers" class="principalIcon">
-                <span class="cardGo">GO</span>
+                <span id="${id}" class="cardGo" }>GO</span>
             </div>
             <h2 class="titles">${avenger}</h2>
             <div class="principalImg displayCenter">
@@ -108,5 +114,35 @@ function creatingCard(db) {
         </article>
         `
     }).join("")
-    console.log(main);
+}
+
+/* adding opsity to cards and getting avenger html */
+function hidingCards(t) {
+    const id = t.id
+    const cards = document.querySelectorAll("article")
+    cards.forEach(card => card.classList.add("cardsOpacity"))
+    setTimeout(() => {
+        getPage("pages/avenger.html", main, null, ()=> avengerPage(id) )
+    }, 3000);
+}    
+
+function avengerPage(id) {
+    const showAvenger = db.find(av => av.id == id)
+    const {name, surname, avenger, prensentationImg, description, web } = showAvenger;
+    const section = document.querySelector(".mainAvenger")
+    section.innerHTML = `
+        <article class="articleAvenger displayCenter">
+            <img class="avengerImg" src="${prensentationImg}" alt="fotografía de ${avenger}">
+            <h2 class="avengerH2">${avenger}</h2>
+            <div>
+                <img class="avengerIcon" src="imgs/iconoAvengers2.jpg" alt="Icono Avengers" class="principalIcon">
+                <a class="web" href="${web}" target="_blank" class="web">WEB</a>
+            </div>
+            <div>
+                <p class="avengerP avengerName">${name} ${surname}</p>
+                <p class="avengerP">${description}</p>
+            </div>
+            <span class="close">CLOSE</span>
+        </article>
+    `
 }
